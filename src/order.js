@@ -13,22 +13,29 @@ function refundOrder(number, array) {
 function listItems(array) {
   var itemNames = [];
   for (var i = 0; i < array.length; i++) {
-    if (i != 0) {
-      itemNames.push(" " + array[i].item);
-    } else {
-      itemNames.push(array[i].item)
-    }
+    itemNames.push(array[i].item);
+    var itemString = itemNames.join(', ');
   }
 
-return itemNames.toString();
-
+return itemString;
 }
 
+function searchOrder(array, itemName) {
+  var arrayItem = [];
+  for (var i = 0; i < array.length; i++) {
+  arrayItem.push(array[i].item);
+  }
+  if (arrayItem.includes(itemName)) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 
 module.exports = {
   takeOrder,
   refundOrder,
   listItems,
-  // searchOrder
+  searchOrder
 }
