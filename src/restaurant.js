@@ -22,21 +22,19 @@ function addMenuItem(newRes, newMenuItem) {
   }
 }
 
-function removeMenuItem(newRes, newMenuItem, itemType) {
-  // for (var i = 0; i < newRes.length; i++) {
-    var breakArray = newRes.menus.breakfast;
-    var lunchArray = newRes.menus.lunch;
-    var dinnerArray = newRes.menus.dinner;
-    var fullMenu = breakArray + lunchArray + dinnerArray;
-    for (var i = 0; i < fullMenu.length; i++) {
-      
-    if (itemType === "breakfast") {
+
+
+  function removeMenuItem(newRes, newMenuItem, itemType) {
+    var menus = Object.keys(newRes.menus)
+    for (var i = 0; i < menus.length; i++) {
+
+    if (itemType === "breakfast" && newRes.menus.breakfast.includes(newMenuItem)) {
       breakArray.splice(i, 1);
       return `No one is eating our ${newMenuItem} - it has been removed from the ${itemType} menu!`;
-    } else if (itemType === "lunch" && lunchArray.length == 0) {
+    } else if (itemType === "lunch" && newRes.menus.lunch.includes(newMenuItem)) {
       lunchArray.splice(i, 1);
       return `No one is eating our ${newMenuItem} - it has been removed from the ${itemType} menu!`;
-    } else if (itemType === "dinner") {
+    } else if (itemType === "dinner" && newRes.menus.dinner.includes(newMenuItem)) {
       dinnerArray.splice(i, 1);
       return `No one is eating our ${newMenuItem} - it has been removed from the ${itemType} menu!`;
     } else {
@@ -44,6 +42,8 @@ function removeMenuItem(newRes, newMenuItem, itemType) {
     }
   }
 }
+
+//I can't understand why this doesn't work!! :()
 
 
 module.exports = {
